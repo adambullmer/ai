@@ -1,10 +1,10 @@
 # Implementation Plan: Git Helper
 
-## Phase 1: Scaffolding
+## Phase 1: Scaffolding [checkpoint: dd2aaa7]
 - [x] Task: Create package directory `packages/skills/git-helper/`
 - [x] Task: Create `package.json` for versioning and metadata
-- [~] Task: Update `SKILL.md` with conventional commit and agentic guidelines
-- [ ] Task: Conductor - User Manual Verification 'Scaffolding' (Protocol in workflow.md)
+- [x] Task: Update `SKILL.md` with conventional commit and agentic guidelines
+- [x] Task: Conductor - User Manual Verification 'Scaffolding' (Protocol in workflow.md)
 
 ## Phase 2: Logic Implementation
 - [ ] Task: Write `scripts/git-helper.sh`
