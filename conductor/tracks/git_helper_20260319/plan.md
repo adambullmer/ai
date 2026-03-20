@@ -7,12 +7,12 @@
 - [x] Task: Conductor - User Manual Verification 'Scaffolding' (Protocol in workflow.md)
 
 ## Phase 2: Logic Implementation
-- [ ] Task: Write `scripts/git-helper.sh`
-    - [ ] Implement `status` command
-    - [ ] Implement `diff` command
-    - [ ] Implement `commit` command with confirmation and conventional commit support
-- [ ] Task: Ensure script is POSIX-compliant
-- [ ] Task: Run `shellcheck` and resolve any warnings
+- [x] Task: Write `scripts/git-helper.sh` [5247d67]
+    - [x] Implement `status` command
+    - [x] Implement `diff` command
+    - [x] Implement `commit` command with confirmation and conventional commit support
+- [x] Task: Ensure script is POSIX-compliant
+- [x] Task: Run `shellcheck` and resolve any warnings
 - [ ] Task: Conductor - User Manual Verification 'Logic Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Documentation & Verification
