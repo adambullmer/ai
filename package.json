@@ -1,6 +1,7 @@
 {
   "name": "ai-monorepo",
   "private": true,
+  "packageManager": "yarn@4.13.0",
   "workspaces": [
     "packages/**/*"
   ]
