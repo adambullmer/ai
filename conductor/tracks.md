@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [~] **Track: Implement Core Skill: Git Helper**
+- [x] **Track: Implement Core Skill: Git Helper**
   *Link: [./tracks/git_helper_20260319/](./tracks/git_helper_20260319/)*
