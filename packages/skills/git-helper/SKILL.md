@@ -12,34 +12,43 @@ Display the current state of the working directory and the staging area.
 Show changes between the working directory and the index.
 - **Command:** `sh scripts/git-helper.sh diff [file_path]`
 
+### `stage`
+Stage changes into the index (staging area).
+- **For untracked files:** Performs a full `git add`.
+  - **Command:** `sh scripts/git-helper.sh stage <file>`
+- **For tracked files (Interactive Hunk Grouping):** Use a space-separated string of characters (e.g., `y`, `n`, `s`, `q`).
+  - **Command:** `sh scripts/git-helper.sh stage <file> "<responses>"`
+  - **Note for Agents:**
+    - Use `s` to split a hunk into smaller pieces if it contains multiple logical changes.
+    - End the string with `q` to quit the interactive session after staging the desired hunks.
+
+### `diff-staged`
+Show changes between the index and the last commit.
+- **Command:** `sh scripts/git-helper.sh diff-staged`
+
 ### `commit`
 Record changes to the repository using conventional commit format with emojis.
-- **CRITICAL:** This command requires explicit user confirmation before execution.
+- **CRITICAL:** Use the `--yes` flag for autonomous execution to skip the confirmation prompt.
 - **Format:** `<emoji> <type>: <description>`
-- **Command:** `sh scripts/git-helper.sh commit "type" "description"`
+- **Command:** `sh scripts/git-helper.sh commit <type> "<description>" --yes`
 
-## Agentic Guidelines: Atomic Commits
+## Workflow: Atomic Staging & Grouping
 
 Agents MUST follow these steps to ensure high-quality, auditable project history:
 
-1.  **Analyze & Plan:** Read the current state of the workspace (`git status` and `git diff`). Group related changes into minimal, atomic, logical units.
-2.  **Categorize:** For each group, identify the conventional commit type and emoji:
-    - `✨ feat`: New feature
-    - `🐛 fix`: Bug fix
-    - `📝 docs`: Documentation only
-    - `♻️ refactor`: Code change that neither fixes a bug nor adds a feature
-    - `🎨 style`: Formatting, missing semicolons, etc.
-    - `🔬 test`: Adding missing tests
-    - `⚡ perf`: Performance improvement
-    - `🚑 hotfix`: Critical bug fix
-    - `🌐 locale`: Internationalization and localization
-    - `👷 ci`: CI related changes
-    - `🔧 chore`: Maintenance tasks
-    - `🏷️ types`: Type definitions
-3.  **Stage Incrementally:** Stage ONLY the files or hunks relevant to the current atomic unit.
-4.  **Execute Commit:** Use the `commit` command with the appropriate type and description.
-5.  **Verify & Repeat:** Confirm the commit was successful and repeat the process for the next group of changes until all work is committed.
+1.  **Analyze (Inventory):** Run `sh scripts/git-helper.sh status` and `sh scripts/git-helper.sh diff` to understand all pending changes (tracked and untracked).
+2.  **Classify (Grouping by Type):** Mentally group modified/new files into Conventional Commit categories (`feat`, `fix`, `refactor`, etc.).
+3.  **Prioritize:** Decide which group to stage first (e.g., fix bugs before adding `feat` features).
+4.  **Interactive Staging (Hunk Grouping):**
+    - For untracked files, use `sh scripts/git-helper.sh stage <file>`. This will perform a full `git add`.
+    - For tracked files, use `sh scripts/git-helper.sh stage <file> "<responses>"`.
+    - **Note for Agents:** `<responses>` is a space-separated string of characters (e.g., `y`, `n`, `s`, `q`).
+    - Use `s` to split a hunk into smaller pieces if it contains multiple logical changes.
+    - End the string with `q` to quit the interactive session after staging the desired hunks.
+5.  **Verify:** Run `sh scripts/git-helper.sh diff-staged` to ensure the staging area contains ONLY the intended logical unit.
+6.  **Commit:** Use `sh scripts/git-helper.sh commit <type> "<description>" --yes` to finalize the atomic unit. The `--yes` flag is REQUIRED for autonomous execution to skip the confirmation prompt.
+7.  **Repeat:** Continue until all changes are committed or stashed.
 
 ## Security Considerations
-- **Human-in-the-Loop:** All destructive or external operations (commit, push) must pause for user approval.
+- **Human-in-the-Loop:** All destructive or external operations (commit, push) must pause for user approval unless `--yes` is used.
 - **No Secrets:** The script is designed to avoid logging sensitive information.
