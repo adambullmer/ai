@@ -1,0 +1,9 @@
+{
+  "name": "@adambullmer/ai-skill-git-helper",
+  "version": "1.0.0",
+  "description": "Standardized git operations for AI agents with human-in-the-loop safety.",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
