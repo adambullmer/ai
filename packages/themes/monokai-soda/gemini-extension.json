@@ -1,0 +1,53 @@
+{
+  "name": "monokai-soda-theme",
+  "version": "1.0.0",
+  "description": "A vibrant, dark theme inspired by Monokai Soda for Gemini CLI.",
+  "themes": [
+    {
+      "name": "monokai-soda",
+      "type": "custom",
+      "text": {
+        "primary": "default",
+        "secondary": "#75715e",
+        "link": "#66d9ef",
+        "accent": "#f92672",
+        "response": "#f92672"
+      },
+      "background": {
+        "primary": "default"
+      },
+      "border": {
+        "default": "#ae81ff",
+        "focused": "#66d9ef"
+      },
+      "status": {
+        "success": "#a6e22e",
+        "warning": "#fd971f",
+        "error": "#f92672"
+      },
+      "ui": {
+        "comment": "#75715e",
+        "symbol": "#ae81ff",
+        "subtle": "#3e3d32",
+        "gradient": ["#66d9ef", "#a6e22e"]
+      },
+      "syntax": {
+        "string": "#e6db74",
+        "method": "#a6e22e",
+        "function": "#a6e22e",
+        "type": "#a6e22e",
+        "class": "#a6e22e",
+        "keyword": "#f92672",
+        "control": "#f92672",
+        "variable": "#fd971f",
+        "attribute": "#fd971f",
+        "parameter": "#fd971f",
+        "number": "#ae81ff",
+        "constant": "#ae81ff",
+        "comment": "#75715e",
+        "metadata": "#75715e",
+        "deleted": "#f92672"
+      }
+    }
+  ]
+}
