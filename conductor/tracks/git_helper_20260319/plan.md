@@ -16,6 +16,6 @@
 - [x] Task: Conductor - User Manual Verification 'Logic Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Documentation & Verification
-- [ ] Task: Create `README.md` with usage instructions, agentic guidelines, and security warnings
-- [ ] Task: Verify skill functionality in a local test environment
+- [x] Task: Create `README.md` with usage instructions, agentic guidelines, and security warnings [d6031d8]
+- [x] Task: Verify skill functionality in a local test environment
 - [ ] Task: Conductor - User Manual Verification 'Documentation & Verification' (Protocol in workflow.md)
