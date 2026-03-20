@@ -39,10 +39,14 @@ case "$COMMAND" in
         fi
         ;;
     stage)
-        FILENAME=$1
+        FILE_PATH=$1
         RESPONSES=$2
+        if [ -z "$FILE_PATH" ]; then
+            echo "Error: FILE_PATH is required for stage command."
+            exit 1
+        fi
         if [ -z "$RESPONSES" ]; then
-            git add "$FILENAME"
+            git add "$FILE_PATH"
         else
             # Sanitize RESPONSES: only allow y, n, s, q, a, d, j, J, g, /, e, ?, and spaces
             CLEAN_RESPONSES=$(printf "%s" "$RESPONSES" | tr -cd 'ynsqadjJg/e? ')
@@ -51,8 +55,9 @@ case "$COMMAND" in
                 exit 1
             fi
             # Pipe responses to git add -p
-            # We use printf to ensure each character is followed by a newline
-            printf "%s\n" $CLEAN_RESPONSES | git add -p "$FILENAME"
+            # Use printf to send each character on a new line to git add -p
+            # shellcheck disable=SC2086
+            printf "%s\n" $CLEAN_RESPONSES | git add -p "$FILE_PATH"
         fi
         ;;
     diff-staged)
