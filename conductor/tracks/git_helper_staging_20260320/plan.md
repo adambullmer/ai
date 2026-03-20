@@ -9,7 +9,7 @@
 - [x] Task: Update tests in `packages/skills/git-helper/test/run_tests.sh`
 - [x] Task: Conductor - User Manual Verification 'Logic Implementation' (Protocol in workflow.md)
 
-## Phase 2: Documentation & Guidelines
+## Phase 2: Documentation & Guidelines [checkpoint: 06af5c6]
 - [x] Task: Update `packages/skills/git-helper/SKILL.md` with "Workflow: Atomic Staging & Grouping"
 - [x] Task: Update `packages/skills/git-helper/README.md` with the new workflow
-- [~] Task: Conductor - User Manual Verification 'Documentation & Guidelines' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Documentation & Guidelines' (Protocol in workflow.md)
