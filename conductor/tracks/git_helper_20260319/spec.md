@@ -20,7 +20,7 @@ Implement a foundational interactive skill, `git-helper`, within the `packages/s
 
 ## Commit Format
 The skill will enforce or suggest the following format:
-`<emoji> <type>(<scope>): <description>`
+`<emoji> <type>: <description>`
 
 Commit types and emojis (based on `adambullmer/semantic-commit-emoji`):
 - `✨ feat`: New feature

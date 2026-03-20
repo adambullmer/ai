@@ -39,14 +39,13 @@ case "$COMMAND" in
         fi
         ;;
     commit)
-        # Handle arguments: commit <type> <scope> <description> [-y|--yes]
+        # Handle arguments: commit <type> <description> [-y|--yes]
         TYPE=$1
-        SCOPE=$2
-        DESCRIPTION=$3
-        FORCE_YES=$4
+        DESCRIPTION=$2
+        FORCE_YES=$3
 
         EMOJI=$(get_emoji "$TYPE")
-        MESSAGE="$EMOJI $TYPE($SCOPE): $DESCRIPTION"
+        MESSAGE="$EMOJI $TYPE: $DESCRIPTION"
 
         echo "Prepared commit message:"
         echo "------------------------"

@@ -26,8 +26,8 @@ sh scripts/git-helper.sh diff [file_path]
 
 ### `commit`
 Record changes to the repository using conventional commit format with emojis.
-- **Format:** `<emoji> <type>(<scope>): <description>`
-- **Command:** `sh scripts/git-helper.sh commit "type" "scope" "description"`
+- **Format:** `<emoji> <type>: <description>`
+- **Command:** `sh scripts/git-helper.sh commit "type" "description"`
 
 #### Supported Types & Emojis
 - `✨ feat`: New feature
@@ -50,7 +50,7 @@ Agents MUST follow these steps to ensure high-quality, auditable project history
 1.  **Analyze & Plan:** Read the current state of the workspace (`git status` and `git diff`). Group related changes into minimal, atomic, logical units.
 2.  **Categorize:** For each group, identify the appropriate conventional commit type and emoji from the list above.
 3.  **Stage Incrementally:** Stage ONLY the files or hunks relevant to the current atomic unit.
-4.  **Execute Commit:** Use the `commit` command with the appropriate type, scope, and description.
+4.  **Execute Commit:** Use the `commit` command with the appropriate type and description.
 5.  **Verify & Repeat:** Confirm the commit was successful and repeat the process for the next group of changes until all work is committed.
 
 ## Security Considerations

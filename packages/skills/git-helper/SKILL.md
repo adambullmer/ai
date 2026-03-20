@@ -15,8 +15,8 @@ Show changes between the working directory and the index.
 ### `commit`
 Record changes to the repository using conventional commit format with emojis.
 - **CRITICAL:** This command requires explicit user confirmation before execution.
-- **Format:** `<emoji> <type>(<scope>): <description>`
-- **Command:** `sh scripts/git-helper.sh commit "type" "scope" "description"`
+- **Format:** `<emoji> <type>: <description>`
+- **Command:** `sh scripts/git-helper.sh commit "type" "description"`
 
 ## Agentic Guidelines: Atomic Commits
 
@@ -37,7 +37,7 @@ Agents MUST follow these steps to ensure high-quality, auditable project history
     - `🔧 chore`: Maintenance tasks
     - `🏷️ types`: Type definitions
 3.  **Stage Incrementally:** Stage ONLY the files or hunks relevant to the current atomic unit.
-4.  **Execute Commit:** Use the `commit` command with the appropriate type, scope, and description.
+4.  **Execute Commit:** Use the `commit` command with the appropriate type and description.
 5.  **Verify & Repeat:** Confirm the commit was successful and repeat the process for the next group of changes until all work is committed.
 
 ## Security Considerations
