@@ -1,3 +1,10 @@
+---
+name: git-helper
+version: 1.0.0
+type: skill
+description: Standardized git operations for AI agents with human-in-the-loop safety and agentic guidelines for atomic, conventional commits.
+---
+
 # Skill: Git Helper
 
 Standardized git operations for AI agents with human-in-the-loop safety and agentic guidelines for atomic, conventional commits.
