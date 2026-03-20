@@ -38,11 +38,52 @@ case "$COMMAND" in
             git diff
         fi
         ;;
+    stage)
+        FILENAME=$1
+        RESPONSES=$2
+        if [ -z "$RESPONSES" ]; then
+            git add "$FILENAME"
+        else
+            # Sanitize RESPONSES: only allow y, n, s, q, a, d, j, J, g, /, e, ?, and spaces
+            CLEAN_RESPONSES=$(printf "%s" "$RESPONSES" | tr -cd 'ynsqadjJg/e? ')
+            if [ "$RESPONSES" != "$CLEAN_RESPONSES" ]; then
+                echo "Error: Invalid characters in responses."
+                exit 1
+            fi
+            # Pipe responses to git add -p
+            # We use printf to ensure each character is followed by a newline
+            printf "%s\n" $CLEAN_RESPONSES | git add -p "$FILENAME"
+        fi
+        ;;
+    diff-staged)
+        git diff --staged "$@"
+        ;;
     commit)
-        # Handle arguments: commit <type> <description> [-y|--yes]
-        TYPE=$1
-        DESCRIPTION=$2
-        FORCE_YES=$3
+        # Initialize variables
+        TYPE=""
+        DESCRIPTION=""
+        SKIP_CONFIRM=0
+
+        # Parse arguments
+        for arg in "$@"; do
+            case "$arg" in
+                -y|--yes)
+                    SKIP_CONFIRM=1
+                    ;;
+                *)
+                    if [ -z "$TYPE" ]; then
+                        TYPE="$arg"
+                    elif [ -z "$DESCRIPTION" ]; then
+                        DESCRIPTION="$arg"
+                    fi
+                    ;;
+            esac
+        done
+
+        if [ -z "$TYPE" ] || [ -z "$DESCRIPTION" ]; then
+            echo "Usage: git-helper commit <type> <description> [--yes]"
+            exit 1
+        fi
 
         EMOJI=$(get_emoji "$TYPE")
         MESSAGE="$EMOJI $TYPE: $DESCRIPTION"
@@ -52,11 +93,8 @@ case "$COMMAND" in
         echo "$MESSAGE"
         echo "------------------------"
 
-        # Check for confirmation unless -y is passed
-        if [ "$FORCE_YES" != "-y" ] && [ "$FORCE_YES" != "--yes" ]; then
+        if [ "$SKIP_CONFIRM" -eq 0 ]; then
             printf "Do you want to proceed with this commit? (y/N): "
-            # In a shell script context, we expect the user (or agent) to handle this
-            # but for automated tests, we use the -y flag.
             read -r CONFIRM
             if [ "$CONFIRM" != "y" ] && [ "$CONFIRM" != "Y" ]; then
                 echo "Commit cancelled."
@@ -67,7 +105,7 @@ case "$COMMAND" in
         git commit -m "$MESSAGE"
         ;;
     *)
-        echo "Usage: sh scripts/git-helper.sh <status|diff|commit> [args]"
+        echo "Usage: sh scripts/git-helper.sh <status|diff|stage|diff-staged|commit> [args]"
         exit 1
         ;;
 esac
