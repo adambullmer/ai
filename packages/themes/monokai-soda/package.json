@@ -1,0 +1,9 @@
+{
+  "name": "@adambullmer/ai-theme-monokai-soda",
+  "version": "1.0.0",
+  "description": "Monokai Soda theme for Gemini and other AI agents.",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
