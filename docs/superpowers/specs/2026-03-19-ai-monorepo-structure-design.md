@@ -48,22 +48,50 @@ packages/<category>/<package-name>/
 ## 4. Components
 
 ### 4.1 AI-Readable Entrypoint (`SKILL.md`, etc.)
-This file is the "brain" of the package. It contains:
-*   **Purpose:** Clear description of what the skill/prompt does.
-*   **Instructions:** Detailed guidance for the agent on how to use the package.
-*   **Command Map:** (For skills) Mapping of intents to specific shell scripts in `scripts/`.
-*   **Context Requirements:** Any files or state the agent needs to provide.
+This file is the "brain" of the package. It MUST include a YAML frontmatter block for structured metadata.
+
+```markdown
+---
+name: git-helper
+version: 1.0.0
+type: skill
+description: Summarizes git status and proposes commit messages.
+inputs:
+  - name: repo_path
+    description: Absolute path to the git repository.
+    required: true
+commands:
+  - intent: summarize_changes
+    script: scripts/summarize.sh
+    arguments: ["{{repo_path}}"]
+---
+
+# Git Helper
+...
+```
 
 ### 4.2 Portable Logic (`scripts/`)
 Logic is implemented as modular shell scripts (`.sh`).
-*   **Input/Output:** Scripts should prefer standard I/O (stdin/stdout) or simple file-based communication.
-*   **Environment:** Assume a standard Unix-like environment (bash/zsh).
+*   **Standards:** Scripts MUST be POSIX-compliant and pass `shellcheck`.
+*   **Runtime:** The repository provides a standard `.devcontainer` configuration to ensure a consistent execution environment across Linux, macOS, and Windows (via WSL/Docker).
 
 ### 4.3 Versioning & Distribution
-*   **Workspaces:** Managed via `npm`/`pnpm` workspaces in the root `package.json`.
-*   **Publishing:** Each package can be published independently to a registry (e.g., npm) or consumed directly via git submodules/references.
+*   **Workspaces:** Managed via `npm`/`pnpm` workspaces.
+*   **Release Management:** Uses [Changesets](https://github.com/changesets/changesets) for automated versioning and changelog generation across independent packages.
 
-## 5. Success Criteria
-*   An agent (e.g., Gemini CLI) can discover and "load" a skill by reading its `SKILL.md`.
-*   A user can copy a package into their own environment and have it "just work" with minimal setup.
-*   New categories or packages can be added without breaking existing ones.
+## 5. Security & Safety
+
+### 5.1 Script Execution Policy
+To mitigate risks of arbitrary code execution:
+*   **Human-in-the-Loop:** Agents MUST NOT execute scripts without explicit user confirmation.
+*   **Sandboxing:** Execution is recommended within a DevContainer or isolated environment.
+*   **Verified Contributors:** Contributions from new community members undergo mandatory manual review before being marked as "Verified."
+
+### 5.2 Secrets & Credentials
+*   **No Hardcoded Secrets:** Scripts MUST NOT contain or store API keys or credentials.
+*   **Environment Variables:** All sensitive data must be passed via environment variables, managed by the host agent/environment.
+
+## 6. Success Criteria
+*   An agent (e.g., Gemini CLI) can programmatically parse the `SKILL.md` frontmatter.
+*   Scripts are verified as POSIX-compliant, ensuring broad portability.
+*   The security policy provides a clear framework for safe community contributions.
