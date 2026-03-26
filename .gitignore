@@ -16,3 +16,6 @@ node_modules
 #!.yarn/cache
 .pnp.*
 .worktrees/
+.agent/
+.claude/
+.gemini/
