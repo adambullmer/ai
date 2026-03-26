@@ -66,7 +66,7 @@ test_commit() {
     touch test_temp_file
     git add test_temp_file
     # Use -y to avoid confirmation in automated tests
-    sh "$SCRIPT_PATH" commit "feat" "add login" "-y"
+    sh "$SCRIPT_PATH" commit "✨ feat: add login" "-y"
     # Cleanup: Revert the commit and remove the file
     git reset --soft HEAD~1 > /dev/null 2>&1
     git reset test_temp_file > /dev/null 2>&1

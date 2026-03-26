@@ -1,13 +1,21 @@
 ---
 name: git-helper
-version: 1.0.0
+version: 2.0.0
 type: skill
-description: Standardized git operations for AI agents with human-in-the-loop safety and agentic guidelines for atomic, conventional commits.
+description: Standardized git operations for AI agents with modular instructions for conventional, atomic commits.
 ---
 
 # Skill: Git Helper
 
 Standardized git operations for AI agents with human-in-the-loop safety and agentic guidelines for atomic, conventional commits.
+
+## Instructions
+
+To ensure high-quality project history, you MUST follow these modular instructions:
+
+1. **[Conventional Commits Spec](instructions/spec.md):** Rules for message structure and types.
+2. **[Semantic Emoji Mapping](instructions/emojis.md):** Mapping commit types to visual emojis.
+3. **[Atomic Staging Rules](instructions/rules.md):** Decision logic for grouping changes and staging.
 
 ## Commands
 
@@ -34,27 +42,22 @@ Show changes between the index and the last commit.
 - **Command:** `sh scripts/git-helper.sh diff-staged`
 
 ### `commit`
-Record changes to the repository using conventional commit format with emojis.
+Record changes to the repository.
 - **CRITICAL:** Use the `--yes` flag for autonomous execution to skip the confirmation prompt.
+- **Process:** You MUST format the message yourself using the [Spec](instructions/spec.md) and [Emoji Mapping](instructions/emojis.md).
 - **Format:** `<emoji> <type>: <description>`
-- **Command:** `sh scripts/git-helper.sh commit <type> "<description>" --yes`
+- **Command:** `sh scripts/git-helper.sh commit "<formatted_message>" --yes`
 
 ## Workflow: Atomic Staging & Grouping
 
-Agents MUST follow these steps to ensure high-quality, auditable project history:
+Follow the [Atomic Staging Rules](instructions/rules.md) for every operation.
 
-1.  **Analyze (Inventory):** Run `sh scripts/git-helper.sh status` and `sh scripts/git-helper.sh diff` to understand all pending changes (tracked and untracked).
-2.  **Classify (Grouping by Type):** Mentally group modified/new files into Conventional Commit categories (`feat`, `fix`, `refactor`, etc.).
-3.  **Prioritize:** Decide which group to stage first (e.g., fix bugs before adding `feat` features).
-4.  **Interactive Staging (Hunk Grouping):**
-    - For untracked files, use `sh scripts/git-helper.sh stage <file>`. This will perform a full `git add`.
-    - For tracked files, use `sh scripts/git-helper.sh stage <file> "<responses>"`.
-    - **Note for Agents:** `<responses>` is a space-separated string of characters (e.g., `y`, `n`, `s`, `q`).
-    - Use `s` to split a hunk into smaller pieces if it contains multiple logical changes.
-    - End the string with `q` to quit the interactive session after staging the desired hunks.
-5.  **Verify:** Run `sh scripts/git-helper.sh diff-staged` to ensure the staging area contains ONLY the intended logical unit.
-6.  **Commit:** Use `sh scripts/git-helper.sh commit <type> "<description>" --yes` to finalize the atomic unit. The `--yes` flag is REQUIRED for autonomous execution to skip the confirmation prompt.
-7.  **Repeat:** Continue until all changes are committed or stashed.
+1.  **Analyze (Inventory):** Run `sh scripts/git-helper.sh status` and `sh scripts/git-helper.sh diff`.
+2.  **Classify (Grouping):** Consult `instructions/rules.md` to group changes by type and priority.
+3.  **Stage:** Use `sh scripts/git-helper.sh stage` to move changes to the index.
+4.  **Verify:** Run `sh scripts/git-helper.sh diff-staged` to ensure the staging area contains ONLY the intended logical unit.
+5.  **Commit:** Prepare the message using `instructions/spec.md` and `instructions/emojis.md`, then run `sh scripts/git-helper.sh commit "<message>" --yes`.
+6.  **Repeat:** Continue until all changes are committed.
 
 ## Security Considerations
 - **Human-in-the-Loop:** All destructive or external operations (commit, push) must pause for user approval unless `--yes` is used.
