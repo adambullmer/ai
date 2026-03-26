@@ -6,26 +6,6 @@ set -e
 COMMAND=$1
 shift
 
-# Emoji Mapping (based on adambullmer/semantic-commit-emoji)
-get_emoji() {
-    TYPE=$1
-    case "$TYPE" in
-        feat)     echo "✨" ;;
-        fix)      echo "🐛" ;;
-        docs)     echo "📝" ;;
-        refactor) echo "♻️" ;;
-        style)    echo "🎨" ;;
-        test)     echo "🔬" ;;
-        perf)     echo "⚡" ;;
-        hotfix)   echo "🚑" ;;
-        locale)   echo "🌐" ;;
-        ci)       echo "👷" ;;
-        chore)    echo "🔧" ;;
-        types)    echo "🏷️" ;;
-        *)        echo "📝" ;; # Default to docs
-    esac
-}
-
 case "$COMMAND" in
     status)
         git status --short
@@ -65,8 +45,7 @@ case "$COMMAND" in
         ;;
     commit)
         # Initialize variables
-        TYPE=""
-        DESCRIPTION=""
+        MESSAGE=""
         SKIP_CONFIRM=0
 
         # Parse arguments
@@ -76,22 +55,17 @@ case "$COMMAND" in
                     SKIP_CONFIRM=1
                     ;;
                 *)
-                    if [ -z "$TYPE" ]; then
-                        TYPE="$arg"
-                    elif [ -z "$DESCRIPTION" ]; then
-                        DESCRIPTION="$arg"
+                    if [ -z "$MESSAGE" ]; then
+                        MESSAGE="$arg"
                     fi
                     ;;
             esac
         done
 
-        if [ -z "$TYPE" ] || [ -z "$DESCRIPTION" ]; then
-            echo "Usage: git-helper commit <type> <description> [--yes]"
+        if [ -z "$MESSAGE" ]; then
+            echo "Usage: git-helper commit <message> [--yes]"
             exit 1
         fi
-
-        EMOJI=$(get_emoji "$TYPE")
-        MESSAGE="$EMOJI $TYPE: $DESCRIPTION"
 
         echo "Prepared commit message:"
         echo "------------------------"
