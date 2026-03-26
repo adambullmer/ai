@@ -46,11 +46,16 @@ test_commit_heredoc() {
 
 body of the message
 EOF
-)" -y
+)" --author "Test Agent" -y
 
-    # Verify commit message
+    # Verify commit message body
     if ! git log -1 --pretty=%B | grep -q "body of the message"; then
         echo "Error: commit message from heredoc incorrect"
+        exit 1
+    fi
+    # Verify commit message trailer
+    if ! git log -1 --pretty=%B | grep -q "Author: Test Agent"; then
+        echo "Error: commit trailer from --author incorrect"
         exit 1
     fi
     # Cleanup

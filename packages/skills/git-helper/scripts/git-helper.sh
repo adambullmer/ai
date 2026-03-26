@@ -18,6 +18,7 @@ case "$COMMAND" in
         # Initialize variables
         MESSAGE=""
         SKIP_CONFIRM=0
+        AUTHOR_TRAILER=""
 
         # Parse arguments
         while [ $# -gt 0 ]; do
@@ -25,6 +26,10 @@ case "$COMMAND" in
                 -y|--yes)
                     SKIP_CONFIRM=1
                     shift
+                    ;;
+                --author)
+                    AUTHOR_TRAILER="$2"
+                    shift 2
                     ;;
                 *)
                     if [ -z "$MESSAGE" ]; then
@@ -54,7 +59,11 @@ case "$COMMAND" in
             fi
         fi
 
-        git commit -m "$MESSAGE"
+        if [ -n "$AUTHOR_TRAILER" ]; then
+            git commit -m "$MESSAGE" --trailer "Author: $AUTHOR_TRAILER"
+        else
+            git commit -m "$MESSAGE"
+        fi
         ;;
     *)
         echo "Usage: sh scripts/git-helper.sh <stage|commit> [args]"

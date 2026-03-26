@@ -32,18 +32,17 @@ Stage changes into the index (staging area).
 
 ### `commit`
 Record changes to the repository.
-- **CRITICAL:** Use the `--yes` flag for autonomous execution to skip the confirmation prompt.
+- **CRITICAL:** Use the `--yes` flag to bypass the CLI prompt, but you MUST request and receive explicit conversational approval from the user BEFORE executing this command. Present the affected files, the reasoning for the commit breakdown, and the drafted commit message for their review (do NOT print the raw `git diff`).
 - **Process:** You MUST format the message yourself using the [Conventional Commits & Emojis Spec](instructions/commit-spec.md).
-- **Command:** Use a HEREDOC to pass multiline messages (required for bodies and footers) safely:
+- **Authorship:** You MUST use the `--author` flag to append a Git Trailer identifying yourself natively.
+- **Command:** Use a HEREDOC to pass multiline messages (required for bodies) safely:
   ```bash
   sh scripts/git-helper.sh commit "$(cat << 'EOF'
   <emoji> <type>[optional scope]: <description>
 
   <body>
-
-  <footer>
   EOF
-  )" --yes
+  )" --author "<Your Agent Name>" --yes
   ```
 
 ## Standard Git Workflow
@@ -60,8 +59,9 @@ Follow the **Guidelines & Rules** defined above for every operation.
 2.  **Classify (Grouping):** Consult the Guidelines to group changes by type and priority.
 3.  **Stage:** Use `sh scripts/git-helper.sh stage <file>` to move changes to the index. If you need to stage specific lines, create a patch file and use `git apply --cached`.
 4.  **Verify:** Run standard `git diff --staged` to ensure the staging area contains ONLY the intended logical unit.
-5.  **Commit:** Prepare the message using `instructions/commit-spec.md`, then run `sh scripts/git-helper.sh commit` using the HEREDOC format to handle the required multiline bodies.
-6.  **Repeat:** Continue until all changes are committed.
+5.  **Review (Human-in-the-Loop):** Draft the commit message using `instructions/commit-spec.md`. Present the affected files, your reasoning for grouping them into this commit, and the drafted commit message to the user for explicit conversational approval. Do NOT print the raw `git diff` as it clutters the chat. You MUST wait for their confirmation before proceeding.
+6.  **Commit:** After approval is given, run `sh scripts/git-helper.sh commit` using the HEREDOC format with the `--yes` flag.
+7.  **Repeat:** Continue until all changes are committed.
 
 ## Security Considerations
 - **Human-in-the-Loop:** All destructive or external operations (commit, push) must pause for user approval unless `--yes` is used.
