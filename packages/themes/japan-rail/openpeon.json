@@ -8,28 +8,16 @@
     "session.start": {
       "sounds": [
         {
-          "file": "sounds/session_start.wav",
-          "label": "Train departure melody 1"
+          "file": "sounds/session_start_00045.mp3",
+          "label": "Tokyo Train Station Departure Melody 1"
         },
         {
-          "file": "sounds/session_start_2.wav",
-          "label": "Train departure melody 2"
+          "file": "sounds/session_start_00046.mp3",
+          "label": "Tokyo Train Station Departure Melody 2"
         },
         {
-          "file": "sounds/session_start_3.wav",
-          "label": "Train departure melody 3"
-        },
-        {
-          "file": "sounds/session_start_4.wav",
-          "label": "Japanese station jingle 1"
-        },
-        {
-          "file": "sounds/session_start_5.wav",
-          "label": "Japanese station jingle 2"
-        },
-        {
-          "file": "sounds/session_start_6.mp3",
-          "label": "Train departure announcement"
+          "file": "sounds/session_start_00047.mp3",
+          "label": "Tokyo Train Station Departure Melody 3"
         }
       ]
     },
@@ -85,7 +73,7 @@
         },
         {
           "file": "sounds/task_error_5.mp3",
-          "label": "Railroad crossing bell"
+          "label": "Train crossing bell"
         }
       ]
     },
