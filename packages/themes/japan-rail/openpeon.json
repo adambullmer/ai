@@ -1,0 +1,97 @@
+{
+  "cesp_version": "1.0",
+  "name": "japan-rail",
+  "display_name": "Japan Rail",
+  "version": "1.0.0",
+  "description": "Japanese Train station jingles and announcements sound pack.",
+  "categories": {
+    "session.start": {
+      "sounds": [
+        {
+          "file": "sounds/session_start.wav",
+          "label": "Train departure melody 1"
+        },
+        {
+          "file": "sounds/session_start_2.wav",
+          "label": "Train departure melody 2"
+        },
+        {
+          "file": "sounds/session_start_3.wav",
+          "label": "Train departure melody 3"
+        }
+      ]
+    },
+    "task.acknowledge": {
+      "sounds": [
+        {
+          "file": "sounds/task_acknowledge.mp3",
+          "label": "Doors are closing announcement"
+        },
+        {
+          "file": "sounds/task_acknowledge_2.mp3",
+          "label": "Train will depart shortly announcement"
+        },
+        {
+          "file": "sounds/task_acknowledge_3.mp3",
+          "label": "Thank you for waiting announcement"
+        }
+      ]
+    },
+    "task.complete": {
+      "sounds": [
+        {
+          "file": "sounds/task_complete.mp3",
+          "label": "Next stop is Tokyo announcement"
+        },
+        {
+          "file": "sounds/task_complete_2.mp3",
+          "label": "Terminal station Tokyo announcement"
+        },
+        {
+          "file": "sounds/task_complete_3.mp3",
+          "label": "We have arrived announcement"
+        }
+      ]
+    },
+    "task.error": {
+      "sounds": [
+        {
+          "file": "sounds/task_error.mp3",
+          "label": "Warning announcement (stand behind the yellow line)"
+        },
+        {
+          "file": "sounds/task_error_2.mp3",
+          "label": "Dangerous rushing announcement"
+        },
+        {
+          "file": "sounds/task_error_3.mp3",
+          "label": "Sudden stop warning announcement"
+        },
+        {
+          "file": "sounds/task_error_4.mp3",
+          "label": "Trouble occurred announcement"
+        }
+      ]
+    },
+    "input.required": {
+      "sounds": [
+        {
+          "file": "sounds/input_required.wav",
+          "label": "Ticket gate chime 1"
+        },
+        {
+          "file": "sounds/input_required_2.wav",
+          "label": "Ticket gate chime 2"
+        },
+        {
+          "file": "sounds/input_required_3.mp3",
+          "label": "Please touch your IC card announcement"
+        },
+        {
+          "file": "sounds/input_required_4.mp3",
+          "label": "Please charge card announcement"
+        }
+      ]
+    }
+  }
+}
