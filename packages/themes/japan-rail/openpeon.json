@@ -18,6 +18,18 @@
         {
           "file": "sounds/session_start_3.wav",
           "label": "Train departure melody 3"
+        },
+        {
+          "file": "sounds/session_start_4.wav",
+          "label": "Japanese station jingle 1"
+        },
+        {
+          "file": "sounds/session_start_5.wav",
+          "label": "Japanese station jingle 2"
+        },
+        {
+          "file": "sounds/session_start_6.mp3",
+          "label": "Train departure announcement"
         }
       ]
     },
@@ -70,6 +82,10 @@
         {
           "file": "sounds/task_error_4.mp3",
           "label": "Trouble occurred announcement"
+        },
+        {
+          "file": "sounds/task_error_5.mp3",
+          "label": "Railroad crossing bell"
         }
       ]
     },
