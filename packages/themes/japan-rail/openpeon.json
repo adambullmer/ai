@@ -8,47 +8,75 @@
     "session.start": {
       "sounds": [
         {
-          "file": "sounds/session_start_00045.mp3",
-          "label": "Tokyo Train Station Departure Melody 1"
+          "file": "sounds/session_start_door_closing.mp3",
+          "label": "Doors are closing announcement"
         },
         {
-          "file": "sounds/session_start_00046.mp3",
-          "label": "Tokyo Train Station Departure Melody 2"
+          "file": "sounds/session_start_departing_shortly.mp3",
+          "label": "Train will depart shortly announcement"
         },
         {
-          "file": "sounds/session_start_00047.mp3",
-          "label": "Tokyo Train Station Departure Melody 3"
+          "file": "sounds/session_start_thank_you_waiting.mp3",
+          "label": "Thank you for waiting announcement"
         }
       ]
     },
     "task.acknowledge": {
       "sounds": [
         {
-          "file": "sounds/task_acknowledge.mp3",
-          "label": "Doors are closing announcement"
+          "file": "sounds/task_acknowledge_akabaneiwabuchi.mp3",
+          "label": "Akabaneiwabuchi Departure Melody"
         },
         {
-          "file": "sounds/task_acknowledge_2.mp3",
-          "label": "Train will depart shortly announcement"
+          "file": "sounds/task_acknowledge_akasakamitsuke.mp3",
+          "label": "Akasakamitsuke Rain Shower Melody"
         },
         {
-          "file": "sounds/task_acknowledge_3.mp3",
-          "label": "Thank you for waiting announcement"
+          "file": "sounds/task_acknowledge_asakusa.mp3",
+          "label": "Asakusa Departure Melody"
+        },
+        {
+          "file": "sounds/task_acknowledge_asakusa_subway_1.mp3",
+          "label": "Asakusa Subway Melody 1"
+        },
+        {
+          "file": "sounds/task_acknowledge_asakusa_subway_2.mp3",
+          "label": "Asakusa Subway Melody 2"
+        },
+        {
+          "file": "sounds/task_acknowledge_tokyo_melody_6.mp3",
+          "label": "Tokyo Train Station Departure Melody 6"
+        },
+        {
+          "file": "sounds/task_acknowledge_tokyo_melody_7.mp3",
+          "label": "Tokyo Train Station Departure Melody 7"
+        },
+        {
+          "file": "sounds/task_acknowledge_tokyo_melody_8.mp3",
+          "label": "Tokyo Train Station Departure Melody 8"
+        },
+        {
+          "file": "sounds/task_acknowledge_tokyo_melody_9.mp3",
+          "label": "Tokyo Train Station Departure Melody 9"
+        },
+        {
+          "file": "sounds/task_acknowledge_tokyo_melody_10.mp3",
+          "label": "Tokyo Train Station Departure Melody 10"
         }
       ]
     },
     "task.complete": {
       "sounds": [
         {
-          "file": "sounds/task_complete.mp3",
+          "file": "sounds/task_complete_next_stop_tokyo.mp3",
           "label": "Next stop is Tokyo announcement"
         },
         {
-          "file": "sounds/task_complete_2.mp3",
+          "file": "sounds/task_complete_terminal_tokyo.mp3",
           "label": "Terminal station Tokyo announcement"
         },
         {
-          "file": "sounds/task_complete_3.mp3",
+          "file": "sounds/task_complete_we_have_arrived.mp3",
           "label": "We have arrived announcement"
         }
       ]
@@ -56,43 +84,59 @@
     "task.error": {
       "sounds": [
         {
-          "file": "sounds/task_error.mp3",
+          "file": "sounds/task_error_yellow_line.mp3",
           "label": "Warning announcement (stand behind the yellow line)"
         },
         {
-          "file": "sounds/task_error_2.mp3",
+          "file": "sounds/task_error_dangerous_rushing.mp3",
           "label": "Dangerous rushing announcement"
         },
         {
-          "file": "sounds/task_error_3.mp3",
+          "file": "sounds/task_error_sudden_stop.mp3",
           "label": "Sudden stop warning announcement"
         },
         {
-          "file": "sounds/task_error_4.mp3",
+          "file": "sounds/task_error_trouble_occurred.mp3",
           "label": "Trouble occurred announcement"
         },
         {
-          "file": "sounds/task_error_5.mp3",
+          "file": "sounds/task_error_crossing_bell.mp3",
           "label": "Train crossing bell"
+        }
+      ]
+    },
+    "task.progress": {
+      "sounds": [
+        {
+          "file": "sounds/task_progress_train_rolling.mp3",
+          "label": "Train rolling on tracks"
+        }
+      ]
+    },
+    "user.spam": {
+      "sounds": [
+        {
+          "file": "sounds/user_spam_train_screeching.mp3",
+          "label": "Train screeching"
         }
       ]
     },
     "input.required": {
       "sounds": [
         {
-          "file": "sounds/input_required.wav",
+          "file": "sounds/input_required_gate_chime_1.wav",
           "label": "Ticket gate chime 1"
         },
         {
-          "file": "sounds/input_required_2.wav",
+          "file": "sounds/input_required_gate_chime_2.wav",
           "label": "Ticket gate chime 2"
         },
         {
-          "file": "sounds/input_required_3.mp3",
+          "file": "sounds/input_required_touch_ic_card.mp3",
           "label": "Please touch your IC card announcement"
         },
         {
-          "file": "sounds/input_required_4.mp3",
+          "file": "sounds/input_required_charge_card.mp3",
           "label": "Please charge card announcement"
         }
       ]
